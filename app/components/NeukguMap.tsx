@@ -31,6 +31,7 @@ export default function NeukguMap() {
   const tileRef = useRef<L.TileLayer | null>(null);
 
   const [panelOpen, setPanelOpen] = useState(false);
+  const touchStartY = useRef(0);
   const [activeTab, setActiveTab] = useState<"timeline" | "info" | "predict">("timeline");
   const [activeEvent, setActiveEvent] = useState<number | null>(null);
   const [layerState, setLayerState] = useState({
@@ -76,41 +77,35 @@ export default function NeukguMap() {
 
     mapEvents.forEach((ev, idx) => {
       const col = getTypeColor(ev.type);
+      const size = ev.type === "escape" ? 26 : 22;
+      const half = size / 2;
 
-      const circle = L.circleMarker([ev.lat!, ev.lng!], {
-        radius: ev.type === "escape" ? 10 : 8,
-        fillColor: col,
-        color: markerBorderColor,
-        weight: 2,
-        fillOpacity: 0.9,
+      const marker = L.marker([ev.lat!, ev.lng!], {
+        icon: L.divIcon({
+          className: "",
+          html: `<div style="
+            background:${col};color:${numBg};
+            width:${size}px;height:${size}px;border-radius:50%;
+            display:flex;align-items:center;justify-content:center;
+            font-size:12px;font-weight:700;
+            font-family:'Space Mono',monospace;
+            border:2px solid ${markerBorderColor};
+            cursor:pointer;
+          ">${idx + 1}</div>`,
+          iconSize: [size, size],
+          iconAnchor: [half, half],
+        }),
       });
 
-      circle.bindPopup(
+      marker.bindPopup(
         `<div style="font-weight:700;color:${col};font-size:14px;margin-bottom:2px">${ev.title}</div>` +
           `<div style="color:${colors.comment};font-size:12px;margin-bottom:6px">${ev.day} ${ev.time}</div>` +
           `<div style="font-size:13px">${ev.desc}</div>`,
         { maxWidth: 260 }
       );
 
-      markerGroup.addLayer(circle);
-      refs.push({ marker: circle, ev });
-
-      L.marker([ev.lat!, ev.lng!], {
-        icon: L.divIcon({
-          className: "",
-          html: `<div style="
-            background:${col};color:${numBg};
-            width:22px;height:22px;border-radius:50%;
-            display:flex;align-items:center;justify-content:center;
-            font-size:12px;font-weight:700;
-            font-family:'Space Mono',monospace;
-            border:2px solid ${markerBorderColor};
-            transform:translate(-11px,-11px);
-          ">${idx + 1}</div>`,
-          iconSize: [0, 0],
-        }),
-        interactive: false,
-      }).addTo(markerGroup);
+      markerGroup.addLayer(marker);
+      refs.push({ marker: marker as unknown as L.CircleMarker, ev });
     });
 
     markersRef.current = refs;
@@ -286,6 +281,11 @@ export default function NeukguMap() {
         <div
           className="md:hidden flex justify-center pt-2 pb-1 cursor-grab"
           onClick={() => setPanelOpen(false)}
+          onTouchStart={(e) => { touchStartY.current = e.touches[0].clientY; }}
+          onTouchEnd={(e) => {
+            const dy = e.changedTouches[0].clientY - touchStartY.current;
+            if (dy > 50) setPanelOpen(false);
+          }}
         >
           <div className="w-10 h-1 rounded-full bg-comment/40" />
         </div>
