@@ -501,6 +501,10 @@ export default function NeukguMap() {
             <span><span className="inline-block w-2.5 h-2.5 rounded-sm mr-1 opacity-20" style={{ background: colors.yellow }} />낮음</span>
           </div>
         </div>
+
+        <div className="px-5 py-2 border-t border-border text-[10px] md:text-xs text-comment/60 text-right">
+          made by gray(권영채)
+        </div>
       </div>
     </div>
   );
