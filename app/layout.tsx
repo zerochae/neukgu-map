@@ -21,7 +21,7 @@ export const metadata: Metadata = {
       {
         url: "/og.jpg",
         width: 1200,
-        height: 554,
+        height: 900,
         alt: "대전 오월드 탈출 늑대 늑구",
       },
     ],
