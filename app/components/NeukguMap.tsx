@@ -279,18 +279,30 @@ export default function NeukguMap() {
         `}
       >
         <div
-          className="md:hidden flex justify-center pt-2 pb-1 cursor-grab"
-          onClick={() => setPanelOpen(false)}
+          className="md:hidden cursor-grab"
           onTouchStart={(e) => { touchStartY.current = e.touches[0].clientY; }}
           onTouchEnd={(e) => {
             const dy = e.changedTouches[0].clientY - touchStartY.current;
-            if (dy > 50) setPanelOpen(false);
+            if (dy > 40) setPanelOpen(false);
           }}
         >
-          <div className="w-10 h-1 rounded-full bg-comment/40" />
+          <div className="flex justify-center pt-3 pb-2">
+            <div className="w-10 h-1 rounded-full bg-comment/40" />
+          </div>
+          <div className="flex items-center justify-between px-5 pb-3">
+            <div>
+              <h1 className="text-xl font-bold">
+                <span className="text-o">늑구</span>맵
+              </h1>
+              <p className="text-xs text-comment mt-0.5">대전 오월드 탈출 늑대 추적</p>
+            </div>
+            <span className="text-xs px-2.5 py-1 rounded-md bg-r/15 text-r border border-r/30 font-bold animate-pulse">
+              MISSING
+            </span>
+          </div>
         </div>
 
-        <div className="flex items-center justify-between px-5 pt-3 pb-2 md:pt-5 md:pb-3">
+        <div className="hidden md:flex items-center justify-between px-5 pt-5 pb-3">
           <div>
             <h1 className="text-xl md:text-2xl font-bold">
               <span className="text-o">늑구맵</span>
