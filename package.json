@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy": "next build && wrangler pages deploy out --project-name=neukgu-map"
   },
   "dependencies": {
     "leaflet": "^1.9.4",
