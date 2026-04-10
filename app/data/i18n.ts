@@ -76,7 +76,11 @@ export const ui = {
     ageVal: "2yr (Male, 30kg)",
     escape: "Escaped",
     escapeVal: "2026.04.08",
-    tabs: { timeline: "Timeline", info: "Search Status", predict: "Prediction" },
+    tabs: {
+      timeline: "Timeline",
+      info: "Search Status",
+      predict: "Prediction",
+    },
     search: {
       title: "Search Status (as of 4/10)",
       radius: ["Radius", "3km -> 6km expanded"],

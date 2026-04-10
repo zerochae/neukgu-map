@@ -33,7 +33,8 @@ const LIGHT = {
   green: "#50a14f",
   magenta: "#a626a4",
   cyan: "#0184bc",
-  tiles: "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+  tiles:
+    "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
 } as const;
 
 function subscribe(cb: () => void) {
@@ -68,7 +69,7 @@ export function useTheme() {
       };
       return map[type] ?? colors.comment;
     },
-    [colors]
+    [colors],
   );
 
   return { theme, isDark, colors, getTypeColor };
