@@ -9,13 +9,28 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://neukgu-map.pages.dev"),
   title: "늑구맵 - 대전 오월드 탈출 늑대 추적",
   description:
     "2026년 4월 8일 대전 오월드에서 탈출한 늑대 '늑구'의 이동 경로 추적 및 예측 시스템",
   openGraph: {
     title: "늑구맵",
-    description: "대전 오월드 탈출 늑대 실시간 추적",
+    description: "대전 오월드 탈출 늑대 '늑구' 이동 경로 추적 및 위치 예측",
     type: "website",
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1200,
+        height: 554,
+        alt: "대전 오월드 탈출 늑대 늑구",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "늑구맵",
+    description: "대전 오월드 탈출 늑대 '늑구' 이동 경로 추적 및 위치 예측",
+    images: ["/og.jpg"],
   },
 };
 
