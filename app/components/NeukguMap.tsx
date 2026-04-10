@@ -292,7 +292,7 @@ export default function NeukguMap() {
           <div className="flex items-center justify-between px-5 pb-3">
             <div>
               <h1 className="text-xl font-bold">
-                <span className="text-o">늑구</span>맵
+                <span className="text-o">늑구맵</span>
               </h1>
               <p className="text-xs text-comment mt-0.5">대전 오월드 탈출 늑대 추적</p>
             </div>
