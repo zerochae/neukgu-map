@@ -249,7 +249,7 @@ export default function NeukguMap() {
         <button
           onClick={() => setPanelOpen((v) => !v)}
           className="fixed bottom-5 left-1/2 -translate-x-1/2 z-50
-            bg-bg2/95 backdrop-blur-md border border-border rounded-full
+            bg-bg2/95 backdrop-blur-md border border-border! rounded-full
             px-5 py-3 flex items-center gap-2.5
             text-base font-bold text-t active:scale-95 transition-transform
             shadow-[0_4px_16px_rgba(0,0,0,0.2)]
@@ -269,12 +269,12 @@ export default function NeukguMap() {
       <div
         className={`
           fixed inset-x-0 bottom-0 z-40
-          bg-bg/[.97] backdrop-blur-sm border-t border-border
+          bg-bg/[.97] backdrop-blur-sm border-t border-t-border
           transition-transform duration-300 ease-out
           rounded-t-2xl
           max-h-[85vh] overflow-hidden flex flex-col
           md:static md:translate-y-0 md:w-[420px] md:max-h-full
-          md:border-t-0 md:border-l md:rounded-none
+          md:border-t-0 md:border-l md:border-l-border md:rounded-none
           ${panelOpen ? "translate-y-0" : "translate-y-full md:translate-y-0"}
         `}
       >
@@ -316,20 +316,20 @@ export default function NeukguMap() {
           </span>
         </div>
 
-        <div className="px-5 pb-3 grid grid-cols-2 gap-x-4 gap-y-1.5 text-sm md:text-base border-b border-border">
+        <div className="px-5 pb-3 grid grid-cols-2 gap-x-4 gap-y-1.5 text-sm md:text-base border-b border-b-border">
           <div><span className="text-comment">이름 </span><span className="font-bold">늑구</span></div>
           <div><span className="text-comment">종 </span><span>유라시아늑대</span></div>
           <div><span className="text-comment">나이 </span><span>2세 (수컷, 30kg)</span></div>
           <div><span className="text-comment">탈출 </span><span>2026.04.08</span></div>
         </div>
 
-        <div className="flex border-b border-border">
+        <div className="flex border-b border-b-border">
           {([["timeline", "타임라인"], ["info", "수색현황"], ["predict", "예측분석"]] as const).map(([key, label]) => (
             <button
               key={key}
               onClick={() => setActiveTab(key)}
               className={`flex-1 py-3 text-sm md:text-base font-bold transition-colors
-                ${activeTab === key ? "text-b border-b-2 border-b" : "text-comment"}`}
+                ${activeTab === key ? "text-b border-b-2 border-b-b" : "text-comment"}`}
             >
               {label}
             </button>
@@ -411,7 +411,7 @@ export default function NeukguMap() {
                 </div>
               </div>
 
-              <div className="border-t border-border pt-4">
+              <div className="border-t border-t-border pt-4">
                 <h3 className="text-sm md:text-base font-bold text-c mb-3">늑대 행동 특성</h3>
                 <div className="space-y-2 text-sm md:text-base">
                   {[
@@ -432,7 +432,7 @@ export default function NeukguMap() {
                 </div>
               </div>
 
-              <div className="border-t border-border pt-4">
+              <div className="border-t border-t-border pt-4">
                 <h3 className="text-sm font-bold text-comment mb-3">레이어 토글</h3>
                 <div className="flex flex-wrap gap-2">
                   {([["markers", "목격 지점"], ["path", "이동 경로"], ["prediction", "예측 구역"], ["search", "수색 범위"]] as const).map(([key, label]) => (
@@ -479,7 +479,7 @@ export default function NeukguMap() {
                   </div>
                 </div>
               </div>
-              <div className="text-xs md:text-sm text-comment leading-relaxed border-t border-border pt-3">
+              <div className="text-xs md:text-sm text-comment leading-relaxed border-t border-t-border pt-3">
                 인공포육 개체로 야생 생존 경험 없음.
                 보문산 산림 벨트 내 체류 패턴.
                 시민 제보 90%+ 오인 신고.
@@ -489,7 +489,7 @@ export default function NeukguMap() {
           )}
         </div>
 
-        <div className="px-5 py-3 border-t border-border bg-bg2/60 hidden md:block">
+        <div className="px-5 py-3 border-t border-t-border bg-bg2/60 hidden md:block">
           <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-comment">
             <span><span className="inline-block w-2.5 h-2.5 rounded-full mr-1" style={{ background: colors.red, boxShadow: `0 0 4px ${colors.red}` }} />탈출</span>
             <span><span className="inline-block w-2.5 h-2.5 rounded-full mr-1" style={{ background: colors.orange }} />확인</span>
@@ -502,7 +502,7 @@ export default function NeukguMap() {
           </div>
         </div>
 
-        <div className="px-5 py-2 border-t border-border text-[10px] md:text-xs text-comment/60 flex items-center justify-end gap-1.5">
+        <div className="px-5 py-2 border-t border-t-border text-[10px] md:text-xs text-comment/60 flex items-center justify-end gap-1.5">
           made by gray(권영채)
           <a href="https://github.com/zerochae" target="_blank" rel="noopener noreferrer" className="hover:text-comment transition-colors">
             <svg className="w-3.5 h-3.5 md:w-4 md:h-4" viewBox="0 0 24 24" fill="currentColor">

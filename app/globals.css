@@ -62,6 +62,14 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--border);
+  }
+}
+
 body {
   font-family: var(--font-mono);
   background: var(--bg);
