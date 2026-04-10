@@ -399,14 +399,14 @@ export default function NeukguMap() {
           <div className="flex justify-center pt-3 pb-2">
             <div className="w-10 h-1 rounded-full bg-comment/40" />
           </div>
-          <div className="flex items-center justify-between px-5 pb-3">
-            <div>
+          <div className="flex items-center justify-between px-5 pb-3 gap-2">
+            <div className="min-w-0">
               <h1 className="text-xl font-bold">
                 <span className="text-o">{L10n.title}</span>
               </h1>
-              <p className="text-xs text-comment mt-0.5">{L10n.subtitle}</p>
+              <p className="text-xs text-comment mt-0.5 truncate">{L10n.subtitle}</p>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 shrink-0">
               <button
                 onClick={toggleLocale}
                 className="text-[10px] px-2 py-1 rounded border border-b/30 text-b font-bold"
@@ -442,20 +442,20 @@ export default function NeukguMap() {
           </div>
         </div>
 
-        <div className="px-5 pb-3 grid grid-cols-2 gap-x-4 gap-y-1.5 text-sm md:text-base border-b border-b-border">
-          <div>
+        <div className={`px-5 pb-3 text-sm md:text-base border-b border-b-border ${isEn ? "flex flex-col gap-1.5" : "grid grid-cols-2 gap-x-4 gap-y-1.5"}`}>
+          <div className={isEn ? "flex justify-between" : ""}>
             <span className="text-comment">{L10n.name} </span>
             <span className="font-bold">{isEn ? "Neukgu" : "늑구"}</span>
           </div>
-          <div>
+          <div className={isEn ? "flex justify-between" : ""}>
             <span className="text-comment">{L10n.species} </span>
             <span>{L10n.speciesVal}</span>
           </div>
-          <div>
+          <div className={isEn ? "flex justify-between" : ""}>
             <span className="text-comment">{L10n.age} </span>
             <span>{L10n.ageVal}</span>
           </div>
-          <div>
+          <div className={isEn ? "flex justify-between" : ""}>
             <span className="text-comment">{L10n.escape} </span>
             <span>{L10n.escapeVal}</span>
           </div>
