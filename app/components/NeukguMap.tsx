@@ -480,7 +480,7 @@ export default function NeukguMap() {
           ))}
         </div>
 
-        <div className="flex-1 overflow-y-auto overscroll-contain">
+        <div className="flex-1 overflow-y-auto overscroll-contain pb-16 md:pb-0">
           {activeTab === "timeline" && (
             <div className="py-2">
               {events.map((ev) => {
